@@ -68,3 +68,25 @@ for index, number := range numbers {
   fmt.Println(index, number)
 }
 ```
+
+## OOP vs Go Approach
+
+Go is **NOT** and Object Oriented Programming language, the closest thing you can do is create **custom types** which can be extended with functions that use type _instances_ as _receivers_ (kinda like methods for objects).
+
+- Creating a custom type
+
+```go
+// Create a type which "extends" a slice of ints
+type customType []int
+```
+
+- Creating **receiver functions** (like methods)
+
+```go
+//  instance references the actual object, it's similar to 'this' in JS or 'self' in Python
+func (instance customType) printItems() {
+  for index, item := range instance {
+    fmt.Println(index, item)
+  }
+}
+```
