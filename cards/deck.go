@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"strings"
+	"time"
 )
 
 // Create a new 'deck' type, which is like an "extension" of a slice of strings
@@ -57,9 +59,18 @@ func newDeckFromFile(filename string) deck {
 		os.Exit(1)
 	}
 
-	// turns the byte slice into a string and the splits it into a string slice
+	// turns the byte slice into a string and then splits it into a string slice
 	s := strings.Split(string(bs), ",")
 
 	//  returns the string slice converted to a deck (which is just an "extended" string slice)
 	return deck(s)
+}
+
+func (d deck) shuffle() {
+	// generate a new seed each time in order to guarantee that each shuffle is unique
+	// we pass in the current unix time on each execution, guaranteeing unique seeds each time
+	rand.Seed(time.Now().UnixNano())
+
+	// this func takes in the length of numbers to shuffle and another func that dictates the shuffling method
+	rand.Shuffle(len(d), func(i, j int) { d[i], d[j] = d[j], d[i] })
 }
