@@ -71,7 +71,7 @@ for index, number := range numbers {
 
 ## OOP vs Go Approach
 
-Go is **NOT** and Object Oriented Programming language, the closest thing you can do is create **custom types** which can be extended with functions that use type _instances_ as _receivers_ (kinda like methods for objects).
+Go is **NOT** an Object Oriented Programming language, the closest thing you can do is create **custom types** which can be extended with functions that use type _instances_ as _receivers_ (kinda like methods for objects).
 
 - Creating a custom type
 
@@ -90,3 +90,17 @@ func (instance customType) printItems() {
   }
 }
 ```
+
+## Writing and Reading files
+
+In order to write data to a file on disk, we have to convert our data into a byte slice `[]byte`.
+And in order to read a file from the disk, we read it as a byte slice and then we have to convert it to the data type that we need.
+
+## Testing
+
+Go testing is not like selenium, mocha, or any other testing framework.
+It is just plain Go code with logic that tests other Go code.
+
+Test files are any file with a `_test.go` postfix.
+
+In order to run the tests, we can run `go test` inside the package directory and all tests will be executed.
